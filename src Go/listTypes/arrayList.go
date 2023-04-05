@@ -9,6 +9,7 @@ import (
 
 // Resizes the underlying array if the size is equal to the capacity
 func (arrayList *ArrayList) ChangeSize() {
+
 	if cap(arrayList.value) == arrayList.size {
 		array := make([]int, cap(arrayList.value)*2)
 		copy(array, arrayList.value)
@@ -30,6 +31,7 @@ func (arrayList *ArrayList) Add(size int) {
 
 // Adds a specific value to the array at a given index
 func (arrayList *ArrayList) AddOnIndex(value int, index int) {
+
 	if index >= arrayList.size { // If the index is greater than or equal to the size of the array, the underlying array is resized
 		arrayList.ChangeSize()
 	}
@@ -43,6 +45,7 @@ func (arrayList *ArrayList) AddOnIndex(value int, index int) {
 
 // Removes the value at a specific index in the array
 func (arrayList *ArrayList) RmFromIndex(index int) {
+
 	for i := index; i < arrayList.size-1; i++ {
 		arrayList.value[i] = arrayList.value[i+1]
 	}
@@ -52,6 +55,7 @@ func (arrayList *ArrayList) RmFromIndex(index int) {
 
 // Returns the value at a specified index in the array, provided that the index meets the specified criteria
 func (arrayList *ArrayList) Get(index int) (int, error) {
+
 	if index >= 0 && index <= arrayList.size { // If the index is out of range, an error is returned
 		return arrayList.value[index], nil
 	} else {
@@ -61,6 +65,7 @@ func (arrayList *ArrayList) Get(index int) (int, error) {
 
 // Sets the value at a specified index in the array to the given value
 func (arrayList *ArrayList) Set(value int, index int) error {
+
 	if index >= 0 && index <= arrayList.size { // If the index is out of range, an error is returned
 		arrayList.value[index] = value
 		return nil

@@ -3,6 +3,7 @@ package listTypes
 // Interface which will define the common methods
 type List interface {
 	Add(size int)
+	Rm(index int)
 	AddOnIndex(value int, index int)
 	RmFromIndex(index int)
 	Get(index int) (int error)
