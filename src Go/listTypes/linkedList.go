@@ -69,7 +69,7 @@ func (linkedList *LinkedList) Rm(index int) error {
 	}
 
 	if linkedList.head == nil { // If the linked list is empty, return an error
-		return fmt.Errorf("LinkedList is empty")
+		return fmt.Errorf("linked list is empty")
 	}
 
 	if index == 0 { // If the index is 0, remove the head node
@@ -104,12 +104,12 @@ func (linkedList *LinkedList) Get(index int) (int, error) {
 	}
 
 	// Start at the head of the list
-	current := linkedList.head
+	prev := linkedList.head
 	for i := 0; i < index; i++ { // Iterate through the list until the specified index is reached
-		current = current.next
+		prev = prev.next
 	}
 
-	return current.value, nil // Return the value of the node at the specified index
+	return prev.value, nil // Return the value of the node at the specified index
 }
 
 // Sets the value of the node at the specified index
@@ -120,13 +120,13 @@ func (linkedList *LinkedList) Set(value int, index int) error {
 	}
 
 	// Start at the head of the list
-	current := linkedList.head
+	prev := linkedList.head
 	for i := 0; i < index; i++ { // Iterate through the list to find the node at the specified index
-		current = current.next
+		prev = prev.next
 	}
 
 	// Set the value of the node to the specified value
-	current.value = value
+	prev.value = value
 
 	return nil
 }

@@ -77,4 +77,40 @@ func main() {
 	linkedList.Set(666, 3)
 	fmt.Printf("Linked List after change the value of the node at the specified index: ")
 	linkedList.PrintLinked()
+
+	fmt.Printf("\n//////////////////////////////////////////////////////////////////////////////////////////////////////////\n\n")
+
+	// Create a LinkedList object and specify the size of the linked list
+	doublyLinkedList := listTypes.DoublyLinkedList{}
+	doublyLinkedSize := 10
+
+	// Add new node to the linked list at specific indices and print the result
+	for i := 0; i < doublyLinkedSize; i++ {
+		doublyLinkedList.Add(i, i)
+	}
+	fmt.Printf("Initial Doubly Linked List: ")
+	doublyLinkedList.PrintDoublyLinked()
+
+	// Removes a node to the linked list at specific indices and print the result
+	// Add new node to the linked list at specific indices and print the result
+	for i := 0; i < 5; i++ {
+		doublyLinkedList.Rm(i + 2)
+	}
+	fmt.Printf("Doubly Linked List after remove nodes: ")
+	doublyLinkedList.PrintDoublyLinked()
+
+	index := 0
+
+	// Gets the value of the node at specific index in the linked list and print the result
+	value, err = doublyLinkedList.Get(index)
+	if value == 0 && index != 0 {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("Value at index %v in the Doubly Linked List: %v\n", index, value)
+	}
+
+	// Sets the value of the node at specific index in the linked list and print the result
+	doublyLinkedList.Set(666, index)
+	fmt.Printf("Doubly Linked List after change the value of the node at the specified index: ")
+	doublyLinkedList.PrintDoublyLinked()
 }
