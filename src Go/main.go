@@ -12,33 +12,50 @@ func main() {
 	arraySize := 10
 
 	// Initialize the array with zeros and print the result
-	arrayList.Add(arraySize)
+	arrayList.Init(arraySize)
 	fmt.Printf("Initial Array: %v\n", arrayList)
 
-	// Add integers to the array at specific indices and print the result
-	for i := 0; i <= arraySize; i++ {
-		arrayList.AddOnIndex(i, i)
+	// Adds values to the array at back
+	for i := 0; i < arraySize; i++ {
+		arrayList.AddToBack(i)
 	}
-	fmt.Printf("Add integers: %v\n", arrayList)
+	fmt.Printf("Adding integers at back: %v\n", arrayList)
+
+	// Removes values to the array at back
+	for i := 0; i < arraySize/2; i++ {
+		arrayList.RmFromBack()
+	}
+	fmt.Printf("Removes integers at back: %v\n", arrayList)
+
+	// Add integers to the array at specific indices and print the result
+	arrayList.AddToIndex(88, 3)
+	fmt.Printf("Adding integer at the index: %v\n", arrayList)
 
 	// Remove an integer from the array at a specific index and print the result
-	arrayList.RmFromIndex(0)
-	fmt.Printf("Remove an integer: %v\n", arrayList)
+	arrayList.RmFromIndex(3)
+	fmt.Printf("Remove integer at the index: %v\n", arrayList)
+
+	// Adds values to the array at front
+	for i := 1; i < arraySize; i++ {
+		arrayList.AddToFront(i)
+	}
+	fmt.Printf("Adding integer at front: %v\n", arrayList)
+
+	// Removes values to the array at front
+	for i := 1; i < arraySize/2; i++ {
+		arrayList.RmFromFront()
+	}
+	fmt.Printf("Removes integer at front: %v\n", arrayList)
 
 	// Get the value at a specific index in the array, and print the result or an error message
-	value, err := arrayList.Get(6)
-	if err == nil {
-		fmt.Printf("Value at a specific index in the array: %v\n", value)
-	} else {
-		fmt.Printf("%v\t%v\n", value, err)
-	}
+	fmt.Printf("Value at a specific index in the array: %v\n", arrayList.Get(0))
 
 	// Change the value at a specific index in the array and print the result or an error message
-	arrayList.Set(666, 2)
+	arrayList.Set(666, 0)
 	fmt.Printf("Array after changing value at specific index: %v\n", arrayList)
 
 	// Print the size of the array
-	fmt.Printf("Array size: %v\n", arrayList.Size())
+	fmt.Printf("Array Length: %v\n", arrayList.Length())
 
 	// Remove the empty space at the end of the array and print the result
 	arrayList.RmDiff()
@@ -66,7 +83,7 @@ func main() {
 	linkedList.PrintLinked()
 
 	// Gets the value of the node at specific index in the linked list and print the result
-	value, err = linkedList.Get(2)
+	value, err := linkedList.Get(2)
 	if value == 0 {
 		fmt.Println(err)
 	} else {

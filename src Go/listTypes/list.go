@@ -2,13 +2,16 @@ package listTypes
 
 // Interface which will define the common methods
 type List interface {
-	Add(size int)
-	Rm(index int)
-	AddOnIndex(value int, index int)
+	Init(size int)
+	AddToBack(value int)
+	RmFromBack()
+	AddToIndex(value int, index int)
 	RmFromIndex(index int)
-	Get(index int) (int error)
+	AddToFront(value int)
+	RmFromFront()
+	Get(index int) int
 	Set(value int, index int)
-	Size() int
+	Length() int
 }
 
 // Interface which will define additional methods that require extra functionality
