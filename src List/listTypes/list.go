@@ -2,13 +2,11 @@ package listTypes
 
 // Interface which will define the common methods
 type List interface {
-	Init(size int)
+	Init()
 	AddToBack(value int)
 	RmFromBack()
 	AddToIndex(value int, index int)
 	RmFromIndex(index int)
-	AddToFront(value int)
-	RmFromFront()
 	Get(index int) int
 	Set(value int, index int)
 	Length() int
@@ -16,7 +14,7 @@ type List interface {
 
 // Interface which will define additional methods that require extra functionality
 type Auxilary interface {
-	ChangeSize()
+	Double()
 	RmDiff()
 	PrintLinked()
 	PrintDoublyLinked()
@@ -32,7 +30,6 @@ type ArrayList struct {
 type LinkedList struct {
 	size int
 	head *Node
-	tail *Node
 }
 
 // Struct which will contain a value variable to hold the element value and a next pointer to point to the next node

@@ -4,25 +4,23 @@ import "testing"
 
 // All implementations of the List interface.
 var instances = map[string]List{
-	"ArrayList": &ArrayList{},
-	//"LinkedList":       &LinkedList{},
-	//"DoublyLinkedList": &DoublyLinkedList{},
+	"ArrayList":        &ArrayList{},
+	"LinkedList":       &LinkedList{},
+	"DoublyLinkedList": &DoublyLinkedList{},
 }
 
 // All tests to run on all implementations of the List interface.
 var tests = map[string]func(t *testing.T, instance List){
-	"TestLength": testLength,
-	/*
-		"TestAddToBack":       testAddToBack,
-		"TestRemoveFromBack":  testRemoveFromBack,
-		"TestAddOnIndex":      testAddOnIndex,
-		"TestRemoveFromIndex": testRemoveFromIndex,
-		"TestGet":             testGet,
-		"TestUpdate":          testUpdate,
-	*/
+	"TestLength":          testLength,
+	"TestAddToBack":       testAddToBack,
+	"TestRmFromBack":      testRmFromBack,
+	"TestAddOnIndex":      testAddOnIndex,
+	"TestRemoveFromIndex": testRmFromIndex,
+	"TestGet":             testGet,
+	"TestSet":             testSet,
 }
 
-// TestLists runs all tests on all implementations of the List interface.
+// TestLists runs all tests on all implementations of the List interface
 func TestLists(t *testing.T) {
 	for testName, test := range tests {
 		test := test
@@ -38,11 +36,11 @@ func TestLists(t *testing.T) {
 	}
 }
 
-// Functions for testing the List interface.
+// Functions for testing the List interface
 
-// Tests the Length method.
+// Tests the Length method
 func testLength(t *testing.T, instance List) {
-	instance.Init(10)
+	instance.Init()
 
 	limit := 15
 	for i := 0; i < limit; i++ {
@@ -54,10 +52,9 @@ func testLength(t *testing.T, instance List) {
 	}
 }
 
-/*
-// Tests the AddToBack method.
+// Tests the AddToBack method
 func testAddToBack(t *testing.T, instance List) {
-	instance.Init(10)
+	instance.Init()
 
 	limit := 15
 	for i := 0; i < limit; i++ {
@@ -73,19 +70,19 @@ func testAddToBack(t *testing.T, instance List) {
 	}
 }
 
-// Tests the RmFromBack method.
-func testRemoveFromBack(t *testing.T, instance List) {
+// Tests the RmFromBack method
+func testRmFromBack(t *testing.T, instance List) {
 	instance.Init()
 
 	instance.AddToBack(1)
-	instance.RemoveFromBack()
+	instance.RmFromBack()
 
 	if instance.Length() > 0 {
 		t.Errorf("Failed to remove element. Length of instance is %d, expected %d", instance.Length(), 0)
 	}
 }
 
-var AddOnIndexTests = map[string]struct {
+var AddToIndexTests = map[string]struct {
 	startingSize, index, value int
 }{
 	"AddToBeggining": {15, 0, 1},
@@ -93,9 +90,9 @@ var AddOnIndexTests = map[string]struct {
 	"AddToEnd":       {11, 11, 3},
 }
 
-// Tests the AddOnIndex method.
+// Tests the AddToIndex method
 func testAddOnIndex(t *testing.T, instance List) {
-	for name, tt := range AddOnIndexTests {
+	for name, tt := range AddToIndexTests {
 		tt := tt
 		t.Run(name, func(t *testing.T) {
 			instance.Init()
@@ -105,7 +102,7 @@ func testAddOnIndex(t *testing.T, instance List) {
 				instance.AddToBack(i)
 			}
 
-			instance.AddOnIndex(tt.index, tt.value)
+			instance.AddToIndex(tt.value, tt.index)
 
 			if instance.Get(tt.index) != tt.value {
 				t.Errorf("Failed to add element on index %d. Element value is %d, expected %d", tt.index, instance.Get(tt.index), tt.value)
@@ -118,7 +115,7 @@ func testAddOnIndex(t *testing.T, instance List) {
 	}
 }
 
-var RemoveFromIndexTests = map[string]struct {
+var RmFromIndexTests = map[string]struct {
 	startingSize, index int
 }{
 	"RemoveFromBeggining": {15, 0},
@@ -126,9 +123,9 @@ var RemoveFromIndexTests = map[string]struct {
 	"RemoveFromEnd":       {11, 11},
 }
 
-// Tests the RemoveFromIndex method.
-func testRemoveFromIndex(t *testing.T, instance List) {
-	for name, tt := range RemoveFromIndexTests {
+// Tests the RmFromIndex method.
+func testRmFromIndex(t *testing.T, instance List) {
+	for name, tt := range RmFromIndexTests {
 		tt := tt
 		t.Run(name, func(t *testing.T) {
 			instance.Init()
@@ -143,7 +140,7 @@ func testRemoveFromIndex(t *testing.T, instance List) {
 				nextElement = instance.Get(tt.index + 1)
 			}
 
-			instance.RemoveFromIndex(tt.index)
+			instance.RmFromIndex(tt.index)
 
 			if instance.Length() > 1 && tt.index < limit-1 {
 				if instance.Get(tt.index) != nextElement {
@@ -162,10 +159,9 @@ var GetTests = map[string]struct {
 	startingSize, index int
 }{
 	"ValidIndex": {15, 1},
-	//"InvalidIndex": {13, 15},
 }
 
-// Tests the Get method.
+// Tests the Get method
 func testGet(t *testing.T, instance List) {
 	for name, tt := range GetTests {
 		tt := tt
@@ -188,17 +184,16 @@ func testGet(t *testing.T, instance List) {
 	}
 }
 
-// Tests the Update method.
-func testUpdate(t *testing.T, instance List) {
+// Tests the Set method
+func testSet(t *testing.T, instance List) {
 	instance.Init()
 
 	instance.AddToBack(1)
 	instance.AddToBack(2)
 
-	instance.Update(1, 3)
+	instance.Set(3, 1)
 
 	if instance.Get(1) != 3 {
 		t.Errorf("Failed to update element on index 1. Element at index 1 is %d, expected %d", instance.Get(1), 3)
 	}
 }
-*/
