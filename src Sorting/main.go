@@ -7,19 +7,30 @@ import (
 )
 
 func main() {
+	// Array size
+	size := 10
+
 	// Random array
-	v := sortingTypes.RandomSort(30)
+	v := sortingTypes.RandomSort(size)
 	fmt.Printf("Random Array: \t%v\n", v)
 
 	//Bubble sorting
 	sortingTypes.BubbleSort(v)
-	fmt.Printf("Bubble sort: \t%v\n", v)
+	fmt.Printf("Bubble Sort: \t%v\n", v)
 
 	// Random array
-	v = sortingTypes.RandomSort(10)
+	v = sortingTypes.RandomSort(size)
 	fmt.Printf("Random Array: \t%v\n", v)
 
 	//select sorting
-	sortingTypes.SelectSort(v)
-	fmt.Printf("Select sort: %v\n", v)
+	sortingTypes.SelectionSort(v)
+	fmt.Printf("Selection Sort: %v\n", v)
+
+	// Random array
+	v = sortingTypes.RandomSort(size)
+	fmt.Printf("Random Array: \t%v\n", v)
+
+	// Insertion sorting
+	sortingTypes.InsertionSort(v)
+	fmt.Printf("Insertion Sort: %v\n", v)
 }
