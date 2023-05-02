@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// Array size
-	size := 10
+	size := 6
 
 	// Random array
 	v := sortingTypes.RandomSort(size)
@@ -33,4 +33,20 @@ func main() {
 	// Insertion sorting
 	sortingTypes.InsertionSort(v)
 	fmt.Printf("Insertion Sort: %v\n", v)
+
+	// Random array
+	v = sortingTypes.RandomSort(size)
+	fmt.Printf("Random Array: \t%v\n", v)
+
+	// Merge sorting
+	sortingTypes.MergeSort(v)
+	fmt.Printf("Merge Sort: \t%v\n", v)
+
+	// Random array
+	v = sortingTypes.RandomSort(size)
+	fmt.Printf("Random Array: \t%v\n", v)
+
+	// Quick sorting
+	sortingTypes.QuickSortStart(v)
+	fmt.Printf("Quick Sort: \t%v\n", v)
 }

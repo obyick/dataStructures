@@ -2,10 +2,16 @@ package sortingTypes
 
 import "math/rand" // Import the math/rand package for generating random numbers
 
+// Takes an integer size as an argument and returns an integer slice
 func RandomSort(size int) []int {
-	v := make([]int, size) // Create a new integer slice of size
-	for i := 0; i < size-1; i++ {
-		v[i] = rand.Intn(10) // Set the value at index to a random integer
+	// Create a new integer slice of size
+	v := make([]int, size)
+
+	// Loop through the slice and set each value to a random integer between 0 and 9 (inclusive)
+	for i := 0; i < size; i++ {
+		v[i] = rand.Intn(99)
 	}
-	return v // Return the filled slice
+
+	// Return the filled slice
+	return v
 }
