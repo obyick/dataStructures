@@ -49,4 +49,12 @@ func main() {
 	// Quick sorting
 	sortingTypes.QuickSortStart(v)
 	fmt.Printf("Quick Sort: \t%v\n", v)
+
+	// Random array
+	v = sortingTypes.RandomSort(size)
+	fmt.Printf("Random Array: \t%v\n", v)
+
+	// Quick sorting
+	v = sortingTypes.CountingSort(v)
+	fmt.Printf("Counting Sort: \t%v\n", v)
 }

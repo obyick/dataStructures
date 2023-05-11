@@ -1,2 +1,2 @@
 # dataStructures
-This repository provides implementations of the ArrayList, LinkedList, and DoubleLinkedList data structures in Golang. Each implementation includes methods for common operations, such as adding and removing elements, as well as algorithms for sorting and searching.
+This repository provides implementations of the types of list (ArrayList, LinkedList, and DoubleLinkedList) data structures. Also types of sorting (BubleSorting, CountingSorting, InsertionSorting, MergeSorting, QuickSorting, SelectionSorting, RandomSorting) algorithms.
